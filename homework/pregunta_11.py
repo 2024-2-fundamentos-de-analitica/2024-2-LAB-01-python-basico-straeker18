@@ -16,3 +16,23 @@ def pregunta_11():
 
 
     """
+    with open("files/input/data.csv", "r") as file:
+        lines = file.readlines()
+
+    sum_dict = {}
+
+    for line in lines:
+        columns = line.strip().split()  # Separar por tabulaciones
+        number = int(columns[1])  # Convertir la columna 2 a entero
+        letters = columns[3].split(",")  # Obtener las letras de la columna 4
+
+        for letter in letters:
+            if letter not in sum_dict:
+                sum_dict[letter] = 0
+            sum_dict[letter] += number  # Sumar el valor de la columna 2
+
+    return dict(sorted(sum_dict.items()))  # Ordenar alfabéticamente y devolver
+
+# Llamar a la función y mostrar el resultado
+print(pregunta_11())
+

@@ -5,9 +5,24 @@ solo puede utilizar las funciones y librerias basicas de python. No puede
 utilizar pandas, numpy o scipy.
 """
 
-
 def pregunta_07():
-    """
+    with open("files/input/data.csv", "r") as file:
+        data = file.readlines()
+
+    result = {}
+    for line in data:
+        columns = line.strip().split()
+        key = int(columns[1])
+        value = columns[0]
+        if key not in result:
+            result[key] = []
+        result[key].append(value)
+
+    return sorted(result.items())
+
+# Llamar a la función y mostrar el resultado
+print(pregunta_07())
+"""
     Retorne una lista de tuplas que asocien las columnas 0 y 1. Cada tupla
     contiene un valor posible de la columna 2 y una lista con todas las letras
     asociadas (columna 1) a dicho valor de la columna 2.

@@ -7,11 +7,23 @@ utilizar pandas, numpy o scipy.
 
 
 def pregunta_02():
-    """
+    counts = {}
+    with open("files/input/data.csv", "r") as file:
+        for line in file:
+            columns = line.strip().split("\t")  # Suponiendo que el separador es tabulador
+            letter = columns[0]  # Primera columna
+            counts[letter] = counts.get(letter, 0) + 1
+    
+    sorted_counts = sorted(counts.items())  # Ordenar alfabéticamente
+    return sorted_counts
+
+# Llamada a la función y muestra del resultado
+print(pregunta_02())
+"""
     Retorne la cantidad de registros por cada letra de la primera columna como
     la lista de tuplas (letra, cantidad), ordendas alfabéticamente.
 
     Rta/
     [('A', 8), ('B', 7), ('C', 5), ('D', 6), ('E', 14)]
 
-    """
+ """

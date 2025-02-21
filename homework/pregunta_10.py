@@ -20,3 +20,19 @@ def pregunta_10():
 
 
     """
+def pregunta_10():
+    with open("files/input/data.csv", "r") as file:
+        lines = file.readlines()
+    
+    result = []
+    
+    for line in lines:
+        columns = line.strip().split()  # Suponiendo que las columnas están separadas por tabulaciones
+        letter = columns[0]  # Columna 1
+        col4_count = len(columns[3].split(","))  # Número de elementos en la columna 4
+        col5_count = len(columns[4].split(","))  # Número de elementos en la columna 5
+        
+        result.append((letter, col4_count, col5_count))
+    
+    return result
+print(pregunta_10())

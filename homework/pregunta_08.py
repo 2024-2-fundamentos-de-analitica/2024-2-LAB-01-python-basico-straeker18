@@ -27,3 +27,34 @@ def pregunta_08():
      (9, ['A', 'B', 'C', 'E'])]
 
     """
+# Leer el archivo data.csv
+    with open('files/input/data.csv', 'r') as file:
+        lines = file.readlines()
+
+    # Crear un diccionario para almacenar los valores de la columna 1 como clave
+    # y las letras asociadas (columna 0) como valor en un conjunto (para evitar duplicados)
+    col1_dict = {}
+
+    # Procesar cada línea del archivo
+    for line in lines:
+        # Dividir la línea en columnas
+        columns = line.strip().split('\t')
+        
+        # Obtener los valores de las columnas 0 y 1
+        col0 = columns[0]  # Letra (columna 0)
+        col1 = int(columns[1])  # Número (columna 1)
+        
+        # Si el valor de la columna 1 ya está en el diccionario, agregar la letra al conjunto
+        if col1 in col1_dict:
+            col1_dict[col1].add(col0)
+        else:
+            # Si no está, crear una nueva entrada en el diccionario con un conjunto que contenga la letra
+            col1_dict[col1] = {col0}
+
+    # Convertir los conjuntos a listas ordenadas y crear una lista de tuplas
+    result = [(key, sorted(list(value))) for key, value in sorted(col1_dict.items())]
+
+    return result
+
+# Llamar a la función y mostrar el resultado
+print(pregunta_08())

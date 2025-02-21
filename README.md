@@ -1,4 +1,4 @@
-# Configuración en MacOS y Linux
+spu # Configuración en MacOS y Linux
 
 Ejecute los siguientes comandos en el terminal:
 
